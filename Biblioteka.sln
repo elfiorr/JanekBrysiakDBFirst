@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteka", "Biblioteka\Biblioteka.csproj", "{530C5729-2D20-4ADD-8BB0-087BB3504B48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteka.Tests", "Biblioteka.Tests\Biblioteka.Tests.csproj", "{2B7851A3-2458-4AC6-BCF5-5AEFB74A2697}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{530C5729-2D20-4ADD-8BB0-087BB3504B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530C5729-2D20-4ADD-8BB0-087BB3504B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530C5729-2D20-4ADD-8BB0-087BB3504B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530C5729-2D20-4ADD-8BB0-087BB3504B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7851A3-2458-4AC6-BCF5-5AEFB74A2697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7851A3-2458-4AC6-BCF5-5AEFB74A2697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7851A3-2458-4AC6-BCF5-5AEFB74A2697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7851A3-2458-4AC6-BCF5-5AEFB74A2697}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBD441C0-121A-4CFE-9F66-B7446F0078F1}
+	EndGlobalSection
+EndGlobal
