@@ -1,0 +1,23 @@
+﻿@model Biblioteka.Models.Wyp__Książki
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <h1>Potwierdzenie</h1>
+    <h2 class="dl-horizontal">
+        <h3>
+            Jesteś pewien, że chcesz usunąć książkę @Html.DisplayFor(model => model.Tytuł)?
+        </h3>
+    </h2>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Wróć do listy", "Index")
+        </div>
+    }
+</div>

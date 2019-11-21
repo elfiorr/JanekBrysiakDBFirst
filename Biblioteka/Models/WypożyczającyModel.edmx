@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UczniowieSzkolyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Wyp_ Książki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tytuł" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Wypożyczający">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imię" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Wypożyczone książki" Type="int" Nullable="false" />
+          <Property Name="Telefon kontaktowy" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Adres mailowy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Wypożyczający_ToTable">
+          <End Role="Wyp_ Książki" Type="Self.Wyp_ Książki" Multiplicity="1" />
+          <End Role="Wypożyczający" Type="Self.Wypożyczający" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wyp_ Książki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wypożyczający">
+              <PropertyRef Name="Wypożyczone książki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UczniowieSzkolyModelStoreContainer">
+          <EntitySet Name="Wyp_ Książki" EntityType="Self.Wyp_ Książki" Schema="dbo" Table="Wyp. Książki" store:Type="Tables" />
+          <EntitySet Name="Wypożyczający" EntityType="Self.Wypożyczający" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Wypożyczający_ToTable" Association="Self.FK_Wypożyczający_ToTable">
+            <End Role="Wyp_ Książki" EntitySet="Wyp_ Książki" />
+            <End Role="Wypożyczający" EntitySet="Wypożyczający" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UczniowieSzkolyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Wyp__Książki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tytuł" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Wypożyczający" Relationship="Self.FK_Wypożyczający_ToTable" FromRole="Wyp__Książki" ToRole="Wypożyczający" />
+        </EntityType>
+        <EntityType Name="Wypożyczający">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imię" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Wypożyczone_książki" Type="Int32" Nullable="false" />
+          <Property Name="Telefon_kontaktowy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres_mailowy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Wyp__Książki" Relationship="Self.FK_Wypożyczający_ToTable" FromRole="Wypożyczający" ToRole="Wyp__Książki" />
+        </EntityType>
+        <Association Name="FK_Wypożyczający_ToTable">
+          <End Role="Wyp__Książki" Type="Self.Wyp__Książki" Multiplicity="1" />
+          <End Role="Wypożyczający" Type="Self.Wypożyczający" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wyp__Książki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wypożyczający">
+              <PropertyRef Name="Wypożyczone_książki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UczniowieSzkolyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Wyp__Książki" EntityType="Self.Wyp__Książki" />
+          <EntitySet Name="Wypożyczający" EntityType="Self.Wypożyczający" />
+          <AssociationSet Name="FK_Wypożyczający_ToTable" Association="Self.FK_Wypożyczający_ToTable">
+            <End Role="Wyp__Książki" EntitySet="Wyp__Książki" />
+            <End Role="Wypożyczający" EntitySet="Wypożyczający" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UczniowieSzkolyModelStoreContainer" CdmEntityContainer="UczniowieSzkolyEntities">
+          <EntitySetMapping Name="Wyp__Książki">
+            <EntityTypeMapping TypeName="UczniowieSzkolyModel.Wyp__Książki">
+              <MappingFragment StoreEntitySet="Wyp_ Książki">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tytuł" ColumnName="Tytuł" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wypożyczający">
+            <EntityTypeMapping TypeName="UczniowieSzkolyModel.Wypożyczający">
+              <MappingFragment StoreEntitySet="Wypożyczający">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Imię" ColumnName="Imię" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Wypożyczone_książki" ColumnName="Wypożyczone książki" />
+                <ScalarProperty Name="Telefon_kontaktowy" ColumnName="Telefon kontaktowy" />
+                <ScalarProperty Name="Adres_mailowy" ColumnName="Adres mailowy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
