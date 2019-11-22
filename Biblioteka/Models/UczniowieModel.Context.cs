@@ -13,10 +13,10 @@ namespace Biblioteka.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UczniowieSzkolyEntities : DbContext
+    public partial class BibliotekaEntities : DbContext
     {
-        public UczniowieSzkolyEntities()
-            : base("name=UczniowieSzkolyEntities")
+        public BibliotekaEntities()
+            : base("name=BibliotekaEntities")
         {
         }
     
@@ -25,7 +25,7 @@ namespace Biblioteka.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Wyp__Książki> Wyp__Książki { get; set; }
+        public virtual DbSet<Książki> Książki { get; set; }
         public virtual DbSet<Wypożyczający> Wypożyczający { get; set; }
     }
 }

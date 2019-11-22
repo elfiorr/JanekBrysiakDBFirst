@@ -10,107 +10,107 @@ using Biblioteka.Models;
 
 namespace Biblioteka.Controllers
 {
-    public class Wyp__KsiążkiController : Controller
+    public class KsiążkiController : Controller
     {
-        private UczniowieSzkolyEntities db = new UczniowieSzkolyEntities();
+        private BibliotekaEntities db = new BibliotekaEntities();
 
-        // GET: Wyp__Książki
+        // GET: Książki
         public ActionResult Index()
         {
-            return View(db.Wyp__Książki.ToList());
+            return View(db.Książki.ToList());
         }
 
-        // GET: Wyp__Książki/Details/5
+        // GET: Książki/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wyp__Książki wyp__Książki = db.Wyp__Książki.Find(id);
-            if (wyp__Książki == null)
+            Książki książki = db.Książki.Find(id);
+            if (książki == null)
             {
                 return HttpNotFound();
             }
-            return View(wyp__Książki);
+            return View(książki);
         }
 
-        // GET: Wyp__Książki/Create
+        // GET: Książki/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Wyp__Książki/Create
+        // POST: Książki/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Tytuł")] Wyp__Książki wyp__Książki)
+        public ActionResult Create([Bind(Include = "Id,TytułKsiążki")] Książki książki)
         {
             if (ModelState.IsValid)
             {
-                db.Wyp__Książki.Add(wyp__Książki);
+                db.Książki.Add(książki);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(wyp__Książki);
+            return View(książki);
         }
 
-        // GET: Wyp__Książki/Edit/5
+        // GET: Książki/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wyp__Książki wyp__Książki = db.Wyp__Książki.Find(id);
-            if (wyp__Książki == null)
+            Książki książki = db.Książki.Find(id);
+            if (książki == null)
             {
                 return HttpNotFound();
             }
-            return View(wyp__Książki);
+            return View(książki);
         }
 
-        // POST: Wyp__Książki/Edit/5
+        // POST: Książki/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Tytuł")] Wyp__Książki wyp__Książki)
+        public ActionResult Edit([Bind(Include = "Id,TytułKsiążki")] Książki książki)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(wyp__Książki).State = EntityState.Modified;
+                db.Entry(książki).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(wyp__Książki);
+            return View(książki);
         }
 
-        // GET: Wyp__Książki/Delete/5
+        // GET: Książki/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wyp__Książki wyp__Książki = db.Wyp__Książki.Find(id);
-            if (wyp__Książki == null)
+            Książki książki = db.Książki.Find(id);
+            if (książki == null)
             {
                 return HttpNotFound();
             }
-            return View(wyp__Książki);
+            return View(książki);
         }
 
-        // POST: Wyp__Książki/Delete/5
+        // POST: Książki/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Wyp__Książki wyp__Książki = db.Wyp__Książki.Find(id);
-            db.Wyp__Książki.Remove(wyp__Książki);
+            Książki książki = db.Książki.Find(id);
+            db.Książki.Remove(książki);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

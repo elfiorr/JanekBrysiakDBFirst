@@ -4,42 +4,42 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UczniowieSzkolyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Wyp_ Książki">
+      <Schema Namespace="BibliotekaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Książki">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tytuł" Type="nvarchar" MaxLength="50" />
+          <Property Name="TytułKsiążki" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Wypożyczający">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Imię" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Wypożyczone książki" Type="int" Nullable="false" />
-          <Property Name="Telefon kontaktowy" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Adres mailowy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Imię" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TytułKsiążkiId" Type="int" Nullable="false" />
+          <Property Name="NumerTelefonu" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="AdresMailowy" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <Association Name="FK_Wypożyczający_ToTable">
-          <End Role="Wyp_ Książki" Type="Self.Wyp_ Książki" Multiplicity="1" />
+          <End Role="Książki" Type="Self.Książki" Multiplicity="1" />
           <End Role="Wypożyczający" Type="Self.Wypożyczający" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Wyp_ Książki">
+            <Principal Role="Książki">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Wypożyczający">
-              <PropertyRef Name="Wypożyczone książki" />
+              <PropertyRef Name="TytułKsiążkiId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UczniowieSzkolyModelStoreContainer">
-          <EntitySet Name="Wyp_ Książki" EntityType="Self.Wyp_ Książki" Schema="dbo" Table="Wyp. Książki" store:Type="Tables" />
+        <EntityContainer Name="BibliotekaModelStoreContainer">
+          <EntitySet Name="Książki" EntityType="Self.Książki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wypożyczający" EntityType="Self.Wypożyczający" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Wypożyczający_ToTable" Association="Self.FK_Wypożyczający_ToTable">
-            <End Role="Wyp_ Książki" EntitySet="Wyp_ Książki" />
+            <End Role="Książki" EntitySet="Książki" />
             <End Role="Wypożyczający" EntitySet="Wypożyczający" />
           </AssociationSet>
         </EntityContainer>
@@ -47,44 +47,44 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UczniowieSzkolyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Wyp__Książki">
+      <Schema Namespace="BibliotekaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Książki">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tytuł" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Wypożyczający" Relationship="Self.FK_Wypożyczający_ToTable" FromRole="Wyp__Książki" ToRole="Wypożyczający" />
+          <Property Name="TytułKsiążki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Wypożyczający" Relationship="Self.FK_Wypożyczający_ToTable" FromRole="Książki" ToRole="Wypożyczający" />
         </EntityType>
         <EntityType Name="Wypożyczający">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Imię" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Wypożyczone_książki" Type="Int32" Nullable="false" />
-          <Property Name="Telefon_kontaktowy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Adres_mailowy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Wyp__Książki" Relationship="Self.FK_Wypożyczający_ToTable" FromRole="Wypożyczający" ToRole="Wyp__Książki" />
+          <Property Name="Imię" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TytułKsiążkiId" Type="Int32" Nullable="false" />
+          <Property Name="NumerTelefonu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="AdresMailowy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Książki" Relationship="Self.FK_Wypożyczający_ToTable" FromRole="Wypożyczający" ToRole="Książki" />
         </EntityType>
         <Association Name="FK_Wypożyczający_ToTable">
-          <End Role="Wyp__Książki" Type="Self.Wyp__Książki" Multiplicity="1" />
+          <End Role="Książki" Type="Self.Książki" Multiplicity="1" />
           <End Role="Wypożyczający" Type="Self.Wypożyczający" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Wyp__Książki">
+            <Principal Role="Książki">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Wypożyczający">
-              <PropertyRef Name="Wypożyczone_książki" />
+              <PropertyRef Name="TytułKsiążkiId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UczniowieSzkolyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Wyp__Książki" EntityType="Self.Wyp__Książki" />
+        <EntityContainer Name="BibliotekaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Książki" EntityType="Self.Książki" />
           <EntitySet Name="Wypożyczający" EntityType="Self.Wypożyczający" />
           <AssociationSet Name="FK_Wypożyczający_ToTable" Association="Self.FK_Wypożyczający_ToTable">
-            <End Role="Wyp__Książki" EntitySet="Wyp__Książki" />
+            <End Role="Książki" EntitySet="Książki" />
             <End Role="Wypożyczający" EntitySet="Wypożyczający" />
           </AssociationSet>
         </EntityContainer>
@@ -93,24 +93,24 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UczniowieSzkolyModelStoreContainer" CdmEntityContainer="UczniowieSzkolyEntities">
-          <EntitySetMapping Name="Wyp__Książki">
-            <EntityTypeMapping TypeName="UczniowieSzkolyModel.Wyp__Książki">
-              <MappingFragment StoreEntitySet="Wyp_ Książki">
+        <EntityContainerMapping StorageEntityContainer="BibliotekaModelStoreContainer" CdmEntityContainer="BibliotekaEntities">
+          <EntitySetMapping Name="Książki">
+            <EntityTypeMapping TypeName="BibliotekaModel.Książki">
+              <MappingFragment StoreEntitySet="Książki">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Tytuł" ColumnName="Tytuł" />
+                <ScalarProperty Name="TytułKsiążki" ColumnName="TytułKsiążki" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Wypożyczający">
-            <EntityTypeMapping TypeName="UczniowieSzkolyModel.Wypożyczający">
+            <EntityTypeMapping TypeName="BibliotekaModel.Wypożyczający">
               <MappingFragment StoreEntitySet="Wypożyczający">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Imię" ColumnName="Imię" />
                 <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
-                <ScalarProperty Name="Wypożyczone_książki" ColumnName="Wypożyczone książki" />
-                <ScalarProperty Name="Telefon_kontaktowy" ColumnName="Telefon kontaktowy" />
-                <ScalarProperty Name="Adres_mailowy" ColumnName="Adres mailowy" />
+                <ScalarProperty Name="TytułKsiążkiId" ColumnName="TytułKsiążkiId" />
+                <ScalarProperty Name="NumerTelefonu" ColumnName="NumerTelefonu" />
+                <ScalarProperty Name="AdresMailowy" ColumnName="AdresMailowy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

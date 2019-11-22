@@ -12,12 +12,12 @@ namespace Biblioteka.Controllers
 {
     public class WypożyczającyController : Controller
     {
-        private UczniowieSzkolyEntities db = new UczniowieSzkolyEntities();
+        private BibliotekaEntities db = new BibliotekaEntities();
 
         // GET: Wypożyczający
         public ActionResult Index()
         {
-            var wypożyczający = db.Wypożyczający.Include(w => w.Wyp__Książki);
+            var wypożyczający = db.Wypożyczający.Include(w => w.Książki);
             return View(wypożyczający.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace Biblioteka.Controllers
         // GET: Wypożyczający/Create
         public ActionResult Create()
         {
-            ViewBag.Wypożyczone_książki = new SelectList(db.Wyp__Książki, "Id", "Tytuł");
+            ViewBag.TytułKsiążkiId = new SelectList(db.Książki, "Id", "TytułKsiążki");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace Biblioteka.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Imię,Nazwisko,Wypożyczone_książki,Telefon_kontaktowy,Adres_mailowy")] Wypożyczający wypożyczający)
+        public ActionResult Create([Bind(Include = "Id,Imię,Nazwisko,TytułKsiążkiId,NumerTelefonu,AdresMailowy")] Wypożyczający wypożyczający)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Biblioteka.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Wypożyczone_książki = new SelectList(db.Wyp__Książki, "Id", "Tytuł", wypożyczający.Wypożyczone_książki);
+            ViewBag.TytułKsiążkiId = new SelectList(db.Książki, "Id", "TytułKsiążki", wypożyczający.TytułKsiążkiId);
             return View(wypożyczający);
         }
 
@@ -73,7 +73,7 @@ namespace Biblioteka.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Wypożyczone_książki = new SelectList(db.Wyp__Książki, "Id", "Tytuł", wypożyczający.Wypożyczone_książki);
+            ViewBag.TytułKsiążkiId = new SelectList(db.Książki, "Id", "TytułKsiążki", wypożyczający.TytułKsiążkiId);
             return View(wypożyczający);
         }
 
@@ -82,7 +82,7 @@ namespace Biblioteka.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Imię,Nazwisko,Wypożyczone_książki,Telefon_kontaktowy,Adres_mailowy")] Wypożyczający wypożyczający)
+        public ActionResult Edit([Bind(Include = "Id,Imię,Nazwisko,TytułKsiążkiId,NumerTelefonu,AdresMailowy")] Wypożyczający wypożyczający)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Biblioteka.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Wypożyczone_książki = new SelectList(db.Wyp__Książki, "Id", "Tytuł", wypożyczający.Wypożyczone_książki);
+            ViewBag.TytułKsiążkiId = new SelectList(db.Książki, "Id", "TytułKsiążki", wypożyczający.TytułKsiążkiId);
             return View(wypożyczający);
         }
 

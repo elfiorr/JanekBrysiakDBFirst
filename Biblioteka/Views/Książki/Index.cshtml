@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Biblioteka.Models.Wyp__Książki>
+﻿@model IEnumerable<Biblioteka.Models.Książki>
 
 @{
     ViewBag.Title = "Index";
@@ -9,10 +9,10 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-bordered table-hover" >
+<table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Tytuł)
+            @Html.DisplayNameFor(model => model.TytułKsiążki)
         </th>
         <th></th>
     </tr>
@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Tytuł)
+            @Html.DisplayFor(modelItem => item.TytułKsiążki)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

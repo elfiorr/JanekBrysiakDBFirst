@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-bordered table-hover">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Imię)
@@ -18,13 +18,13 @@
             @Html.DisplayNameFor(model => model.Nazwisko)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefon_kontaktowy)
+            @Html.DisplayNameFor(model => model.NumerTelefonu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Adres_mailowy)
+            @Html.DisplayNameFor(model => model.AdresMailowy)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Wyp__Książki.Tytuł)
+            @Html.DisplayNameFor(model => model.Książki.TytułKsiążki)
         </th>
         <th></th>
     </tr>
@@ -38,13 +38,13 @@
             @Html.DisplayFor(modelItem => item.Nazwisko)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Telefon_kontaktowy)
+            @Html.DisplayFor(modelItem => item.NumerTelefonu)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Adres_mailowy)
+            @Html.DisplayFor(modelItem => item.AdresMailowy)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Wyp__Książki.Tytuł)
+            @Html.DisplayFor(modelItem => item.Książki.TytułKsiążki)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

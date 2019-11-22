@@ -17,10 +17,10 @@ namespace Biblioteka.Models
         public int Id { get; set; }
         public string Imię { get; set; }
         public string Nazwisko { get; set; }
-        public int Wypożyczone_książki { get; set; }
-        public string Telefon_kontaktowy { get; set; }
-        public string Adres_mailowy { get; set; }
+        public int TytułKsiążkiId { get; set; }
+        public string NumerTelefonu { get; set; }
+        public string AdresMailowy { get; set; }
     
-        public virtual Wyp__Książki Wyp__Książki { get; set; }
+        public virtual Książki Książki { get; set; }
     }
 }
