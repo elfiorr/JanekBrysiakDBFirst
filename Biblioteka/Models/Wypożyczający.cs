@@ -11,14 +11,25 @@ namespace Biblioteka.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Wypożyczający
     {
         public int Id { get; set; }
+        [Required(ErrorMessage ="Podaj imię")]
+        [Display(Name = "Imię")]
         public string Imię { get; set; }
+        [Required(ErrorMessage = "Podaj nazwisko")]
+        [Display(Name = "Nazwisko")]
         public string Nazwisko { get; set; }
+        [Required(ErrorMessage = "Wybierz książkę")]
+        [Display(Name = "Tytuł książki")]
         public int TytułKsiążkiId { get; set; }
+        [Required(ErrorMessage = "Podaj numer telefonu")]
+        [Display(Name = "Numer telefonu")]
         public string NumerTelefonu { get; set; }
+        [Required(ErrorMessage = "Podaj adres e-mail")]
+        [Display(Name = "Adres e-mail")]
         public string AdresMailowy { get; set; }
     
         public virtual Książki Książki { get; set; }
