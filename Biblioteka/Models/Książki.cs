@@ -25,6 +25,8 @@ namespace Biblioteka.Models
         [Required(ErrorMessage = "Podaj tytuł książki")]
         [Display(Name = "Tytuł")]
         public string TytułKsiążki { get; set; }
+        [Display(Name = "Opis")]
+        public string Opis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypożyczający> Wypożyczający { get; set; }
