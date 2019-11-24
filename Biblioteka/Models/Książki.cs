@@ -11,8 +11,7 @@ namespace Biblioteka.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Książki
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +21,9 @@ namespace Biblioteka.Models
         }
     
         public int Id { get; set; }
-        [Required(ErrorMessage = "Podaj tytuł książki")]
-        [Display(Name = "Tytuł")]
         public string TytułKsiążki { get; set; }
-        [Display(Name = "Opis")]
         public string Opis { get; set; }
+        public string NumerWewKsiążki { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypożyczający> Wypożyczający { get; set; }

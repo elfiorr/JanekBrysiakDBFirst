@@ -4,21 +4,28 @@
     ViewBag.Title = "Details";
 }
 
-<div>
-    <h4>@Html.DisplayNameFor(model => model.TytułKsiążki) - @Html.DisplayFor(model => model.TytułKsiążki)</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Opis: @Html.DisplayFor(model => model.Opis)
-        </dt>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-        <dd>
-           
-        </dd>
+    <div>
+        <h4>@Html.DisplayNameFor(model => model.TytułKsiążki) - @Html.DisplayFor(model => model.TytułKsiążki)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Opis: @Html.DisplayFor(model => model.Opis)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Wróć do listy", "Index")
-</p>
+            <dd>
+
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Wróć do listy", "Index")
+    </p>
+}
+
+

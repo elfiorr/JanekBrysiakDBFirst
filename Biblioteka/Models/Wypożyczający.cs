@@ -9,35 +9,16 @@
 
 namespace Biblioteka.Models
 {
-    using System.ComponentModel.DataAnnotations;
-
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Wypożyczający
     {
         public int Id { get; set; }
-        [Required(ErrorMessage ="Podaj imię")]
-        [Display(Name = "Imię")]
-        [MaxLength(20)]
-        [MinLength(2)]
         public string Imię { get; set; }
-        [Required(ErrorMessage = "Podaj nazwisko")]
-        [Display(Name = "Nazwisko")]
-        [MaxLength(20)]
-        [MinLength(2)]
         public string Nazwisko { get; set; }
-        [Required(ErrorMessage = "Wybierz książkę")]
-        [Display(Name = "Tytuł książki")]
         public int TytułKsiążkiId { get; set; }
-        [Required(ErrorMessage = "Podaj numer telefonu")]
-        [Display(Name = "Numer telefonu")]
-        [Phone(ErrorMessage = "Podaj właściwy format dla numeru telefonu")]
-        [MaxLength(25)]
-        [MinLength(9)]
         public string NumerTelefonu { get; set; }
-        [Required(ErrorMessage = "Podaj adres e-mail")]
-        [Display(Name = "Adres e-mail")]
-        [EmailAddress(ErrorMessage = "Podaj właściwy format dla adresu e-mail")]
-        [MaxLength(50)]
-        [MinLength(6)]
         public string AdresMailowy { get; set; }
     
         public virtual Książki Książki { get; set; }
