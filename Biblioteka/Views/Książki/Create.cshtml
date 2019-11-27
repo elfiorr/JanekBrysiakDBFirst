@@ -8,27 +8,31 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Książki</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            Wprowadź tytuł:
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TytułKsiążki, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TytułKsiążki, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        Wprowadź opis:
-        <div>
-            @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Dodaj" class="btn btn-default" />
-            </div>
+<div class="form-horizontal">
+    <h4>Książki</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        Wprowadź tytuł:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TytułKsiążki, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TytułKsiążki, "", new { @class = "text-danger" })
         </div>
     </div>
+    Wprowadź opis:
+    <div>
+        @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    Wprowadź numer wewnętrzny:
+    <div>
+        @Html.EditorFor(model => model.NumerWewKsiążki, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Dodaj" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

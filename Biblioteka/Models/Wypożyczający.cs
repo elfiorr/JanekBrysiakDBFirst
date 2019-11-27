@@ -11,13 +11,17 @@ namespace Biblioteka.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Wypożyczający
     {
         public int Id { get; set; }
+        //[Required(ErrorMessage = "")]
         public string Imię { get; set; }
+        //[Required(ErrorMessage = "")]
         public string Nazwisko { get; set; }
         public int TytułKsiążkiId { get; set; }
+        //[Required(ErrorMessage = "")]
         public string NumerTelefonu { get; set; }
         public string AdresMailowy { get; set; }
     

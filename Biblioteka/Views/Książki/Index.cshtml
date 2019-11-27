@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Książki</h2>
+<h2>Lista książek</h2>
 
 
 <table class="table">
@@ -19,8 +19,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TytułKsiążki) 
-            @Html.DisplayFor(modelItem => item.Opis)
+            @Html.DisplayFor(modelItem => item.TytułKsiążki)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Opis)

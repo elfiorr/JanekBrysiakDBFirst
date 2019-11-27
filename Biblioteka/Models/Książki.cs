@@ -11,21 +11,26 @@ namespace Biblioteka.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Książki
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Książki()
         {
             this.Wypożyczający = new HashSet<Wypożyczający>();
         }
-    
+
         public int Id { get; set; }
+        [Display(Name ="Tytuł Książki")]
+        [Required(ErrorMessage ="Podaj tytuł książki")]
         public string TytułKsiążki { get; set; }
         public string Opis { get; set; }
+        [Required(ErrorMessage = "Podaj numer wewnętrzny książki")]
         public string NumerWewKsiążki { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wypożyczający> Wypożyczający { get; set; }
+        //public virtual Wypożyczający Wypożyczający { get; set; }
     }
 }
