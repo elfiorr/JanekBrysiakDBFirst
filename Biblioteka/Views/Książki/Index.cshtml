@@ -12,6 +12,7 @@
         <th>
             @Html.DisplayNameFor(model => model.TytułKsiążki)
             @Html.DisplayNameFor(model => model.Opis)
+            @Html.DisplayNameFor(model => model.NumerWewKsiążki)
         </th>
         <th></th>
     </tr>
@@ -23,6 +24,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumerWewKsiążki)
         </td>
         <td>
             @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }) |
