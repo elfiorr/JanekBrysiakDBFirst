@@ -9,20 +9,29 @@
 
 namespace Biblioteka.Models
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Wypożyczający
     {
         public int Id { get; set; }
-        //[Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "Podaj imię")]
+        [MaxLength(25, ErrorMessage = "Maksymalna liczna znaków to 25")]
+        [MinLength(1, ErrorMessage = "Maksymalna liczba znaków to 1")]
         public string Imię { get; set; }
-        //[Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "Podaj nazwisko")]
+        [MaxLength(45, ErrorMessage = "Maksymalna liczna znaków to 25")]
+        [MinLength(1, ErrorMessage = "Minimalna liczba znaków to 1")]
         public string Nazwisko { get; set; }
+        //[Display(Name = "Tytuł książki")]
         public int TytułKsiążkiId { get; set; }
-        //[Required(ErrorMessage = "")]
+        [Required(ErrorMessage = "Podaj numer telefonu")]
+        [Phone(ErrorMessage = "Podaj właściwy numer telefonu")]
+        [MaxLength(9, ErrorMessage = "Maksymalna liczna znaków to 9")]
+        [MinLength(1, ErrorMessage = "Minimalna liczba znaków to 1")]
+        [Display(Name = "Numer telefonu")]
         public string NumerTelefonu { get; set; }
+        [Required(ErrorMessage = "Podaj adres e-mail")]
+        [EmailAddress(ErrorMessage = "Podaj poprawny adres e-mail")]
         public string AdresMailowy { get; set; }
     
         public virtual Książki Książki { get; set; }

@@ -26,6 +26,7 @@ namespace Biblioteka.Models
         [Required(ErrorMessage ="Podaj tytuł książki")]
         public string TytułKsiążki { get; set; }
         public string Opis { get; set; }
+        [Display(Name = "Numer wewnętrzny książki")]
         [Required(ErrorMessage = "Podaj numer wewnętrzny książki")]
         public string NumerWewKsiążki { get; set; }
     
